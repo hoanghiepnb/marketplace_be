@@ -10,6 +10,7 @@ export class UsersService {
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
   ) {}
+
   public async createUser(userAddress: string): Promise<void> {
     // check and save user
     const user = await this.userRepository.findOne({
@@ -22,5 +23,17 @@ export class UsersService {
         updatedAt: new Date(),
       });
     }
+  }
+
+  public async getUserByAddress(userAddress: string): Promise<UserEntity> {
+    return this.userRepository.findOne({
+      where: { address: userAddress },
+    });
+  }
+
+  public async getUserById(userId: string): Promise<UserEntity> {
+    return this.userRepository.findOne({
+      where: { id: userId },
+    });
   }
 }

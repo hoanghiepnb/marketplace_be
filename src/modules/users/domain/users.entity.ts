@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')
 export class UserEntity extends BaseEntity implements IUser {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid' )
   id: string;
 
   @Column({ type: 'varchar', nullable: false, unique: true, name: 'address' })
