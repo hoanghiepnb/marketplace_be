@@ -5,6 +5,8 @@ import { UsersModule } from './modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ScheduleModule } from '@nestjs/schedule';
 import { EventOnchainModule } from './modules/event-onchain/event-onchain.module';
+import { ItemsModule } from "./modules/items/items.module";
+import { NftModule } from "./modules/nft/nft.module";
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { EventOnchainModule } from './modules/event-onchain/event-onchain.module
     UsersModule,
     ScheduleModule.forRoot(),
     EventOnchainModule,
+    ItemsModule,
+    NftModule
   ],
   controllers: [AppController],
   providers: [AppService],
