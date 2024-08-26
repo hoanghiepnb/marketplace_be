@@ -1,6 +1,7 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { INft } from "./nft.model";
 
+@Entity('nft')
 export class NftEntity extends BaseEntity implements INft {
   @PrimaryGeneratedColumn('uuid')
   id: string;

@@ -5,10 +5,10 @@ import { UsersModule } from './modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ScheduleModule } from '@nestjs/schedule';
 import { EventOnchainModule } from './modules/event-onchain/event-onchain.module';
-import { ItemsModule } from "./modules/items/items.module";
-import { NftModule } from "./modules/nft/nft.module";
-import { NftSaleHistoryModule } from "./modules/nft-sale-history/nft-sale-history.module";
-import { BlockchainInfoModule } from "./modules/blockchain-info/blockchain-info.module";
+import { ItemsModule } from './modules/items/items.module';
+import { NftModule } from './modules/nft/nft.module';
+import { NftSaleHistoryModule } from './modules/nft-sale-history/nft-sale-history.module';
+import { BlockchainInfoModule } from './modules/blockchain-info/blockchain-info.module';
 
 @Module({
   imports: [
@@ -28,7 +28,7 @@ import { BlockchainInfoModule } from "./modules/blockchain-info/blockchain-info.
     ItemsModule,
     NftModule,
     NftSaleHistoryModule,
-    BlockchainInfoModule
+    BlockchainInfoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

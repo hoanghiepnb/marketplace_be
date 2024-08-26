@@ -11,18 +11,20 @@ export class UsersService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  public async createUser(userAddress: string): Promise<void> {
+  public async findOrCreateUser(userAddress: string): Promise<string> {
     // check and save user
     const user = await this.userRepository.findOne({
       where: { address: userAddress },
     });
     if (!isDefined(user)) {
-      await this.userRepository.save({
+      const newUser = await this.userRepository.save({
         address: userAddress,
         createdAt: new Date(),
         updatedAt: new Date(),
       });
+      return newUser.id;
     }
+    return user.id;
   }
 
   public async getUserByAddress(userAddress: string): Promise<UserEntity> {

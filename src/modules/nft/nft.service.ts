@@ -19,17 +19,24 @@ export class NftService {
     });
   }
 
-  public async createNft(nftData: CreateNftDto): Promise<void> {
+  public async findOrCreateNft(nftAddress: string, nftId: number): Promise<string> {
     const nft = await this.nftRepository.findOne({
-      where: { nftId: nftData.nftId },
+      where: {
+        address: nftAddress,
+        nftId,
+      },
     });
     if (!isDefined(nft)) {
-      await this.nftRepository.save({
-        ...nftData,
+      const newNft = await this.nftRepository.save({
+        address: nftAddress,
+        nftId,
+        owner: '0x0000000000000000000000000000000000000000',
         createdAt: new Date(),
         updatedAt: new Date(),
       });
+      return newNft.id;
     }
+    return nft.id;
   }
 
   public async getNftsByOwner(owner: string): Promise<NftEntity[]> {
@@ -38,7 +45,7 @@ export class NftService {
     });
   }
 
-  public async getAllNfts(): Promise<NftEntity[]> {
+  public async getAllNfts(): Promise<any> {
     return this.nftRepository.find();
   }
 

@@ -1,4 +1,4 @@
-import { ItemStatus } from "../enum/item-status.enum";
+import { ItemStatus } from '../enum/item-status.enum';
 
 export interface IItem {
   id: string;
